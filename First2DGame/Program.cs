@@ -7,6 +7,7 @@ namespace First2DGame
     {
         public static void Main(string[] args)
         {
+            Console.Title = "The Game";
             Console.CursorVisible = false;
             UserInterface userInterface = new UserInterface();
             while (true)
@@ -15,8 +16,7 @@ namespace First2DGame
             }
 
 
-
-/*
+            /*
             string data = File.ReadAllText("Levels/level1.txt", Encoding.UTF8);
 
             String[] x = data.Split(";");
@@ -42,13 +42,13 @@ namespace First2DGame
                 }
                 Console.WriteLine();
             }
+            */
 
-
-
-            string file = "Levels/level" + 1 + ".txt";
-            var data = File.ReadAllText(file, Encoding.UTF8);
-            Console.Write(data);    
-*/
+            /*
+                        string file = "Levels/level" + 1 + ".txt";
+                        var data = File.ReadAllText(file, Encoding.UTF8);
+                        Console.Write(data);    
+            */
         }
     }
 }

@@ -68,19 +68,21 @@ namespace First2DGame
         }
         public void Click(ConsoleKeyInfo key)
         {
-            if(x == 0)
+            if(x == 0) // New Game
+            {
+                LoadingMaps loadingMaps = new LoadingMaps();
+                Map map = new Map(loadingMaps.loadMap(1));
+                map.LogicMap();
+            }
+            else if (x == 1) // Load Game
             {
 
             }
-            else if (x == 1)
+            else if (x == 2) // Settings
             {
 
             }
-            else if (x == 2)
-            {
-
-            }
-            else if (x == 3)
+            else if (x == 3) // Exit
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Environment.Exit(0);
