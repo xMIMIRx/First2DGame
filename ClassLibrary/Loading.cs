@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace First2DGame
+namespace ClassLibrary
 {
-    class LoadingMaps
+    public class Loading
     {
-        public int[][] loadMap(int level)
+        public int[][] LoadMap(int level)
         {
             string data = File.ReadAllText("Levels/level" + level + ".txt", Encoding.UTF8);
 
@@ -24,6 +24,23 @@ namespace First2DGame
                 for (int j = 0; j < row.Length; j++)
                 {
                     result[i][j] = Int32.Parse(row[j]);
+                }
+            }
+            return result;
+        }
+        public string[] DrawFiles()
+        {
+            string[] files = System.IO.Directory.GetFiles("Levels/");
+            string[] result = new string[files.Length + 1];
+            for(int i = 0; i < result.Length; i++)
+            {
+                if(i == files.Length)
+                {
+                    result[i] = "Exit";
+                }
+                else
+                {
+                    result[i] = files[i];
                 }
             }
             return result;

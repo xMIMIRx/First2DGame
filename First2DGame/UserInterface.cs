@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary;
 
 namespace First2DGame
 {
     class UserInterface
     {
-        public String[] menu =
-        {
-            "New Game",
-            "Load Game",
-            "Settings",
-            "Exit"
-        };
+        Loading loading = new Loading();
+        public String[] menu;
         static int x = 0;
 
         public void DrawMenu(int x)
         {
+            menu = loading.DrawFiles();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("=======================================================================\r\n" +
                           "   /__  ___/                     //   ) )                              \r\n" +
@@ -59,33 +56,24 @@ namespace First2DGame
             else if (key.Key == ConsoleKey.Enter || key.Key == ConsoleKey.Escape)
             {
                 Console.Clear();
-                Click(key);
+                Click();
                 return;
             }
 
             Console.Clear();
             DrawMenu(x);
         }
-        public void Click(ConsoleKeyInfo key)
+        public void Click()
         {
-            if(x == 0) // New Game
-            {
-                LoadingMaps loadingMaps = new LoadingMaps();
-                Map map = new Map(loadingMaps.loadMap(1));
-                map.LogicMap();
-            }
-            else if (x == 1) // Load Game
-            {
-
-            }
-            else if (x == 2) // Settings
-            {
-
-            }
-            else if (x == 3) // Exit
+            Map map = new Map(loading.LoadMap(x + 1));
+            if (x == menu.Length - 1)
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Environment.Exit(0);
+            }
+            else
+            {
+                map.LogicMap();
             }
         }
     }

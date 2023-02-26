@@ -35,10 +35,20 @@ namespace First2DGame
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                     }
-                    else if (map[y][x] == 4)
+                    else if (map[y][x] == 2)
                     {
                         PlayerX = y;
                         PlayerY = x;
+                    }
+                    else if (map[y][x] == 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("?");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (map[y][x] == 4)
+                    {
+
                     }
 
                 }
@@ -61,7 +71,14 @@ namespace First2DGame
         {
             Console.CursorLeft = PlayerX;
             Console.CursorTop = PlayerY;
-            Console.Write(" ");
+            if (map[PlayerY][PlayerX] == 3)
+            {
+                Console.Write("?");
+            }
+            else
+            {
+                Console.Write(" ");
+            }
         }
         public void LogicMap()
         {
