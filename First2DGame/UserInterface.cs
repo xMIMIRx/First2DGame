@@ -32,18 +32,28 @@ namespace First2DGame
                 {
                     if (x == i)
                     {
-                        if(i == menu.Length - 1) Console.ForegroundColor = ConsoleColor.Red; 
-                        else Console.ForegroundColor = ConsoleColor.Green; 
+                        if (i == menu.Length - 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\n [ EXIT ]");
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine(" [ Poziom " + (i + 1) + " ]");
+                        }
 
-                        Console.WriteLine(" [ " + menu[i] + " ]");
                         Console.ForegroundColor = ConsoleColor.Cyan;
                     }
                     else
                     {
-                        Console.WriteLine("   " + menu[i]);
+                        if (i == menu.Length - 1) Console.WriteLine("\n   EXIT ");
+                        else Console.WriteLine("   Poziom " + (i + 1));
                     }
                 }
             }
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\n=======================================================================");
         }
         public void SelectingOptions()
         {
