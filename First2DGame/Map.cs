@@ -11,6 +11,7 @@ namespace First2DGame
         public int PlayerX;
         public int PlayerY;
         public int[][] map;
+        public UserInterface userInterface = new UserInterface();
 
         public Map(int[][] map)
         {
@@ -71,14 +72,7 @@ namespace First2DGame
         {
             Console.CursorLeft = PlayerX;
             Console.CursorTop = PlayerY;
-            if (map[PlayerY][PlayerX] == 3)
-            {
-                Console.Write("?");
-            }
-            else
-            {
-                Console.Write(" ");
-            }
+            Console.Write(" ");
         }
         public void LogicMap()
         {
@@ -127,7 +121,11 @@ namespace First2DGame
                 }
                 if (key.Key == ConsoleKey.Escape)
                 {
-                    break;
+                    return;
+                }
+                if (map[PlayerY][PlayerX] == 3)
+                {
+                    return;
                 }
             }
         }

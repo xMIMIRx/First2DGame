@@ -65,7 +65,6 @@ namespace First2DGame
         }
         public void Click()
         {
-            Map map = new Map(loading.LoadMap(x + 1));
             if (x == menu.Length - 1)
             {
                 Console.ForegroundColor = ConsoleColor.Black;
@@ -73,6 +72,7 @@ namespace First2DGame
             }
             else
             {
+                Map map = new Map(loading.LoadMap(x + 1));
                 map.LogicMap();
             }
         }
