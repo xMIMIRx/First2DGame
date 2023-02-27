@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,6 @@ namespace First2DGame
 
         public Map(int[][] map)
         {
-            PlayerX = 2;
-            PlayerY = 2;
             this.map = map;
         }
 
@@ -28,28 +27,36 @@ namespace First2DGame
                 {
                     Console.CursorLeft = x;
                     Console.CursorTop = y;
+                    // Ściany
                     if (map[y][x] == 1)
                     {
                         Console.BackgroundColor = ConsoleColor.Magenta;
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.Write("#");
+                        Console.Write("W");
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                     }
+                    // Gracz
                     else if (map[y][x] == 2)
                     {
                         PlayerX = y;
                         PlayerY = x;
                     }
+                    // Meta
                     else if (map[y][x] == 3)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write("?");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
+                    // Płapka
                     else if (map[y][x] == 4)
                     {
-
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("#");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
@@ -83,6 +90,7 @@ namespace First2DGame
                 DrawPlayer();
 
                 ConsoleKeyInfo key = Console.ReadKey(true);
+                // Chodzenie
                 if (key.Key == ConsoleKey.W && PlayerY > 0)
                 {
                     if (PlayerCanMove(PlayerX, PlayerY - 1))
@@ -92,7 +100,7 @@ namespace First2DGame
                         DrawPlayer();
                     }
                 }
-                else if (key.Key == ConsoleKey.S)
+                if (key.Key == ConsoleKey.S)
                 {
                     if (PlayerCanMove(PlayerX, PlayerY + 1))
                     {
@@ -101,7 +109,7 @@ namespace First2DGame
                         DrawPlayer();
                     }
                 }
-                else if (key.Key == ConsoleKey.A && PlayerX > 0)
+                if (key.Key == ConsoleKey.A && PlayerX > 0)
                 {
                     if (PlayerCanMove(PlayerX - 1, PlayerY))
                     {
@@ -110,7 +118,7 @@ namespace First2DGame
                         DrawPlayer();
                     }
                 }
-                else if (key.Key == ConsoleKey.D)
+                if (key.Key == ConsoleKey.D)
                 {
                     if (PlayerCanMove(PlayerX + 1, PlayerY))
                     {
@@ -123,9 +131,23 @@ namespace First2DGame
                 {
                     return;
                 }
+                // ==============
                 if (map[PlayerY][PlayerX] == 3)
                 {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n\n   !!! BRAWO PRZESZEDŁEŚ POZIOM !!!");
+                    Thread.Sleep(2000);
                     return;
+                }
+                if (map[PlayerY][PlayerX] == 4)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\n   !!! SKUCHA !!!");
+                    Thread.Sleep(2000);
+                    return;
+
                 }
             }
         }

@@ -63,7 +63,7 @@ namespace First2DGame
             ConsoleKeyInfo key = Console.ReadKey(true);
             if ((key.Key == ConsoleKey.W || key.Key == ConsoleKey.UpArrow) && x > 0) x--;
             else if ((key.Key == ConsoleKey.S || key.Key == ConsoleKey.DownArrow) && x < menu.Length - 1) x++;
-            else if (key.Key == ConsoleKey.Enter || key.Key == ConsoleKey.Escape)
+            else if (key.Key == ConsoleKey.Enter)
             {
                 Console.Clear();
                 Click();
