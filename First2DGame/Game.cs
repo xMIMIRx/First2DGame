@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace First2DGame
 {
-    class Map
+    class Game
     {
         private int PlayerX;
         private int PlayerY;
         private int[][] map;
 
-        public Map(int[][] map)
+        public Game(int[][] map)
         {
             this.map = map;
         }

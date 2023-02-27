@@ -16,16 +16,8 @@ namespace First2DGame
         public void DrawMenu(int x)
         {
             menu = loading.DrawFiles();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("=======================================================================\r\n" +
-                          "   /__  ___/                     //   ) )                              \r\n" +
-                          "     / /  / __      ___         //         ___      _   __      ___    \r\n" +
-                          "    / /  //   ) ) //___) )     //  ____  //   ) ) // ) )  ) ) //___) ) \r\n" +
-                          "   / /  //   / / //           //    / / //   / / // / /  / / //        \r\n" +
-                          "  / /  //   / / ((____       ((____/ / ((___( ( // / /  / / ((____     \r\n" +
-                          "=======================================================================\r\n\n");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Elements title = new Elements();
+            title.Title();
             for (int i = 0; i < menu.Length; i++)
             {
                 if (x >= 0 && i < menu.Length)
@@ -52,8 +44,8 @@ namespace First2DGame
                     }
                 }
             }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("\n=======================================================================");
+            Elements footer = new Elements("\n=======================================================================", ConsoleColor.Yellow, ConsoleColor.White);
+            footer.ViewText();
         }
         public void SelectingOptions()
         {
@@ -82,8 +74,18 @@ namespace First2DGame
             }
             else
             {
-                Map map = new Map(loading.LoadMap(x + 1));
-                map.LogicMap();
+                if (loading.LoadMap(x + 1) == null)
+                {
+                    Elements errorMap = new Elements("\n\n\n    *PLIK MAPY JEST USZKODZONY*\n\n     *POZIOM " + (x+1) + " ZOSTAŁ USUNIĘTY*\n\n        *PROSIMY O RESTART*", ConsoleColor.Red, ConsoleColor.Black);
+                    File.Delete(loading.DrawFiles()[x]);
+                    errorMap.ViewText();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Game map = new Game(loading.LoadMap(x + 1));
+                    map.LogicMap();
+                }
             }
         }
     }

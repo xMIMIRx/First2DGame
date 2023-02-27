@@ -10,27 +10,32 @@ namespace ClassLibrary
     {
         public int[][] LoadMap(int level)
         {
-            string data = File.ReadAllText("Levels/level" + level + ".txt", Encoding.UTF8);
-
-            String[] x = data.Split(";");
-
-            int[][] result = new int[x.Length][];
-
-            for (int i = 0; i < x.Length; i++)
+            int[][] result;
+            try
             {
-                String[] row = x[i].Split(",");
-                result[i] = new int[row.Length];
-
-                for (int j = 0; j < row.Length; j++)
+                string data = File.ReadAllText("Levels/level" + level + ".txt");
+                String[] x = data.Split(";");
+                result = new int[x.Length][];
+                for (int i = 0; i < x.Length; i++)
                 {
-                    result[i][j] = Int32.Parse(row[j]);
+                    String[] row = x[i].Split(",");
+                    result[i] = new int[row.Length];
+
+                    for (int j = 0; j < row.Length; j++)
+                    {
+                        result[i][j] = Int32.Parse(row[j]);
+                    }
                 }
+            }
+            catch
+            {
+                result = null;
             }
             return result;
         }
         public string[] DrawFiles()
         {
-            string[] files = System.IO.Directory.GetFiles("Levels/");
+            string[] files = System.IO.Directory.GetFiles("Levels/","level*");
             string[] result = new string[files.Length + 1];
             for(int i = 0; i < result.Length; i++)
             {
