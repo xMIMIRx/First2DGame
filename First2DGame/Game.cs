@@ -29,7 +29,7 @@ namespace First2DGame
                     // Ściany
                     if (map[y][x] == 1)
                     {
-                        Elements wall = new Elements("W", ConsoleColor.Magenta, ConsoleColor.Magenta, ConsoleColor.White, ConsoleColor.Black);
+                        Elements wall = new Elements("W", ConsoleColor.Blue, ConsoleColor.Blue, ConsoleColor.White, ConsoleColor.Black);
                         wall.ViewText();
                     }
                     // Gracz
