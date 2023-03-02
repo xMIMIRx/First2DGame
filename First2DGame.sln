@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "First2DGame", "First2DGame\First2DGame.csproj", "{76535CD7-4B2F-403B-ACC5-222362C61839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{882C78F3-F1A4-4746-9B3D-A352893799A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{882C78F3-F1A4-4746-9B3D-A352893799A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{8983142C-AE56-45A9-8FE3-51405F1D0EEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{882C78F3-F1A4-4746-9B3D-A352893799A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{882C78F3-F1A4-4746-9B3D-A352893799A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{882C78F3-F1A4-4746-9B3D-A352893799A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8983142C-AE56-45A9-8FE3-51405F1D0EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8983142C-AE56-45A9-8FE3-51405F1D0EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8983142C-AE56-45A9-8FE3-51405F1D0EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8983142C-AE56-45A9-8FE3-51405F1D0EEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace First2DGame
 {
-    class Game
+    public class Game
     {
-        private int PlayerX;
-        private int PlayerY;
-        private int[][] map;
+        public int PlayerX;
+        public int PlayerY;
+        public int[][] map;
 
         public Game(int[][] map)
         {
@@ -29,11 +29,8 @@ namespace First2DGame
                     // Ściany
                     if (map[y][x] == 1)
                     {
-                        Console.BackgroundColor = ConsoleColor.Magenta;
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.Write("W");
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Elements wall = new Elements("W", ConsoleColor.Magenta, ConsoleColor.Magenta, ConsoleColor.White, ConsoleColor.Black);
+                        wall.ViewText();
                     }
                     // Gracz
                     else if (map[y][x] == 2)
@@ -44,18 +41,14 @@ namespace First2DGame
                     // Meta
                     else if (map[y][x] == 3)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write("?");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Elements meta = new Elements("?", ConsoleColor.Green, ConsoleColor.White);
+                        meta.ViewText();
                     }
-                    // Płapka
+                    // Pułapka
                     else if (map[y][x] == 4)
                     {
-                        Console.BackgroundColor = ConsoleColor.DarkRed;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("#");
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Elements trap = new Elements("#", ConsoleColor.Red, ConsoleColor.DarkRed, ConsoleColor.White, ConsoleColor.Black);
+                        trap.ViewText();
                     }
 
                 }
@@ -70,9 +63,8 @@ namespace First2DGame
         {
             Console.CursorLeft = PlayerX;
             Console.CursorTop = PlayerY;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write((char)2);
-            Console.ForegroundColor = ConsoleColor.White;
+            Elements player = new Elements("☻", ConsoleColor.Yellow, ConsoleColor.White);
+            player.ViewText();
         }
         public void HidePlayer()
         {
@@ -130,13 +122,12 @@ namespace First2DGame
                 {
                     return;
                 }
-                // ==============
                 if (map[PlayerY][PlayerX] == 3)
                 {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\n\n   !!! BRAWO PRZESZEDŁEŚ POZIOM !!!");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(700);
                     return;
                 }
                 if (map[PlayerY][PlayerX] == 4)
@@ -144,7 +135,7 @@ namespace First2DGame
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\n   !!! SKUCHA !!!");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(700);
                     return;
                 }
             }
