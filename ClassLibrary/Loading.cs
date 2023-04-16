@@ -13,6 +13,9 @@ namespace ClassLibrary
             int[][] result;
             try
             {
+                // Pełna ścieżka to:
+                // \First2DGame\First2DGame\bin\Debug\net6.0\Levels
+                // w tym folderze znajdują się pliki txt które zawierają przykładowy poziom
                 string data = File.ReadAllText("Levels/level" + level + ".txt");
                 String[] x = data.Split(";");
                 result = new int[x.Length][];
